@@ -1,4 +1,9 @@
-FROM openjdk:11
+FROM openjdk:11-jre-slim
+
+WORKDIR /app
+
+COPY target/spring-boot-app.jar /app/spring-boot-app.jar
+
 EXPOSE 8080
-COPY target/spring-boot-mysql.jar spring-boot-mysql.jar
-ENTRYPOINT ["java","-jar","/spring-boot-mysql.jar"]
+
+CMD ["java", "-jar", "spring-boot-app.jar"]
